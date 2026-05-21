@@ -1,17 +1,14 @@
-import { VercelRequest, VercelResponse } from "@vercel/node";
-import { connectDB, Entry, MenuItem, Settings } from "./_db";
+import { connectDB, Entry, MenuItem, Settings } from "./_db.js";
 
-export default async (req: VercelRequest, res: VercelResponse) => {
+export default async (req, res) => {
   if (req.method !== "GET") {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
   try {
     console.log("Connecting to MongoDB...");
-    console.log("MONGODB_URI exists:", !!process.env.MONGODB_URI);
-
     await connectDB();
-    console.log("Connected to MongoDB successfully");
+    console.log("Connected!");
 
     const entries = await Entry.find().sort({ date: -1 });
     const menuItems = await MenuItem.find();
@@ -30,12 +27,8 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     }
 
     res.json({ entries, menuItems, settings });
-  } catch (error: any) {
-    console.error("Error:", error.message);
-    console.error("Stack:", error.stack);
-    res.status(500).json({
-      error: error.message || "Failed to fetch data",
-      details: error.toString()
-    });
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ error: error.message });
   }
 };
