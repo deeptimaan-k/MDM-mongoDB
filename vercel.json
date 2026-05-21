@@ -1,11 +1,10 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
+  "env": {
+    "MONGODB_URI": "@mongodb_uri"
+  },
   "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
-    },
     {
       "source": "/(.*)",
       "destination": "/index.html"
