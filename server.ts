@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 
 // MongoDB Connection
-const MONGODB_URI = "mongodb+srv://radiant:radiant@cluster0.zffjxju.mongodb.net/?appName=Cluster0";
+const MONGODB_URI = "mongodb+srv://radiant:radiant@cluster0.pqvvxpj.mongodb.net/?appName=Cluster0";
 
 mongoose.connect(MONGODB_URI)
   .then(() => console.log("Connected to MongoDB"))
