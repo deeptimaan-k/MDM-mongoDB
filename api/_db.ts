@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://radiant:radiant@cluster0.pqvvxpj.mongodb.net/?appName=Cluster0";
+const MONGODB_URI = "mongodb+srv://radiant:radiant@cluster0.pqvvxpj.mongodb.net/?appName=Cluster0";
 
 const EntrySchema = new mongoose.Schema({
   date: String,
